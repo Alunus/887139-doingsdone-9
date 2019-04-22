@@ -81,10 +81,12 @@ $show_complete_tasks = rand(0, 1);
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                        <?php foreach ($categories as $key =>$value)  {
-                            print("<li class=\"main-navigation__list-item\"><a class=\"main-navigation__list-item-link\" href=\"#\">" . $value . "</a>");
-                            print("<span class=\"main-navigation__list-item-count\">0</span></li>");
-                        }?>
+                        <?php foreach ($categories as $key =>$value): ?>
+                            <li class="main-navigation__list-item">
+                            <a class="main-navigation__list-item-link" href="#"><?php print($value)?></a>;
+                            <span class="main-navigation__list-item-count">0</span>
+                            </li>;
+                        <?php endforeach;?>
                     </ul>
                 </nav>
 
