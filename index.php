@@ -75,6 +75,16 @@ $show_complete_tasks = rand(0, 1);
                 'is_complete' => 'false',
             ],
     ];?>
+        <?php function counter($task_array,$task){
+            $i=0;
+              foreach ($task_array as $key) {
+                  if ($key['category'] == $task) {
+                      $i++;
+                  }
+              }
+              print($i);
+        }
+        ?>
         <div class="content">
             <section class="content__side">
                 <h2 class="content__side-heading">Проекты</h2>
@@ -83,9 +93,9 @@ $show_complete_tasks = rand(0, 1);
                     <ul class="main-navigation__list">
                         <?php foreach ($categories as $key =>$value): ?>
                             <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?php print($value)?></a>;
-                            <span class="main-navigation__list-item-count">0</span>
-                            </li>;
+                            <a class="main-navigation__list-item-link" href="#"><?php print($value)?></a>
+                            <span class="main-navigation__list-item-count"><?php counter($task_list, $value)?></span>
+                            </li>
                         <?php endforeach;?>
                     </ul>
                 </nav>
