@@ -1,13 +1,13 @@
 <?php
 // показывать или нет выполненные задачи
-$show_complete_tasks = rand(0, 1);
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <title><?=$title;?></title>
+    <title><?= $title; ?></title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/flatpickr.min.css">
@@ -24,7 +24,8 @@ $show_complete_tasks = rand(0, 1);
             </a>
 
             <div class="main-header__side">
-                <a class="main-header__side-item button button--plus open-modal" href="pages/form-task.html">Добавить задачу</a>
+                <a class="main-header__side-item button button--plus open-modal" href="pages/form-task.html">Добавить
+                    задачу</a>
 
                 <div class="main-header__side-item user-menu">
                     <div class="user-menu__data">
@@ -36,30 +37,18 @@ $show_complete_tasks = rand(0, 1);
             </div>
         </header>
 
-
-    <?php
-        function counter($task_array,$task){
-            $i=0;
-            foreach ($task_array as $key) {
-                if ($key['category'] == $task) {
-                    $i++;
-                }
-            }
-            return $i;
-        }
-        ?>
         <div class="content">
             <section class="content__side">
                 <h2 class="content__side-heading">Проекты</h2>
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                        <?php foreach ($categories as $key =>$value): ?>
+                        <?php foreach ($categories as $value): ?>
                             <li class="main-navigation__list-item">
-                                <a class="main-navigation__list-item-link" href="#"><?=$value;?></a>
-                                <span class="main-navigation__list-item-count"><?=counter($task_list, $value);?></span>
+                                <a class="main-navigation__list-item-link" href="#"><?= $value['header']; ?></a>
+                                <span class="main-navigation__list-item-count"><?= $value['count']; ?></span>
                             </li>
-                        <?php endforeach;?>
+                        <?php endforeach; ?>
                     </ul>
                 </nav>
 
@@ -67,7 +56,7 @@ $show_complete_tasks = rand(0, 1);
                    href="pages/form-project.html" target="project_add">Добавить проект</a>
             </section>
 
-            <?=$content;?>
+            <?= $content; ?>
 
         </div>
     </div>

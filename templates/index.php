@@ -24,6 +24,7 @@
     </div>
 
     <table class="tasks">
+        <?php $show_complete_tasks = rand(0, 1);?>
         <? foreach ($task_list as $key): ?>
             <?php if ($show_complete_tasks == 1 || $key['is_complete'] == 'false'): ?>
                 <tr class="tasks__item task <?php if ($key['is_complete'] == 'true'): print "task--completed"; endif;?>">
