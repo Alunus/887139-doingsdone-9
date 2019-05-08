@@ -74,15 +74,15 @@ $show_complete_tasks = rand(0, 1);
                 'category' => 'Домашние дела',
                 'is_complete' => 'false',
             ],
-    ];?>
-        <?php function counter($task_array,$task){
+    ];
+        function counter($task_array,$task){
             $i=0;
               foreach ($task_array as $key) {
                   if ($key['category'] == $task) {
                       $i++;
                   }
               }
-              print($i);
+             return $i;
         }
         ?>
         <div class="content">
@@ -93,8 +93,8 @@ $show_complete_tasks = rand(0, 1);
                     <ul class="main-navigation__list">
                         <?php foreach ($categories as $key =>$value): ?>
                             <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?php print($value)?></a>
-                            <span class="main-navigation__list-item-count"><?php counter($task_list, $value)?></span>
+                            <a class="main-navigation__list-item-link" href="#"><?=$value;?></a>
+                            <span class="main-navigation__list-item-count"><?=counter($task_list, $value);?></span>
                             </li>
                         <?php endforeach;?>
                     </ul>
@@ -137,14 +137,14 @@ $show_complete_tasks = rand(0, 1);
                                 <label class="checkbox task__checkbox">
                                     <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1"
                                     <?php if ($key['is_complete'] == 'true'): print "checked"; endif;?> >
-                                    <span class="checkbox__text"><?php print($key['task']);?></span>
+                                    <span class="checkbox__text"><?= $key['task'];?></span>
                                 </label>
                             </td>
                             <td class="task__file">
                                 <a class="download-link" href="#">Home.psd</a>
                             </td>
 
-                            <td class="task__date"><?php print($key['date']);?></td>
+                            <td class="task__date"><?=$key['date'];?></td>
                         </tr>
                     <?php endif;?>
                     <? endforeach; ?>
