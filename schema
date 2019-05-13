@@ -1,0 +1,32 @@
+create database doingsdone
+default character set utf8
+default collate utf8_general_ci;
+
+use doingsdone;
+
+create table projects (
+id int auto_increment primary key,
+name char(128)
+);
+
+
+create table tasks (
+id int auto_increment primary key,
+date_create timestamp,
+status tinyint(1) default '0',
+name char(64),
+file char(128),
+date_end timestamp
+);
+
+create table users (
+id int auto_increment primary key,
+date_reg timestamp default current_timestamp,
+email char(64),
+name char(128),
+password char(128)
+);
+create index project_name on projects(name);
+create index date_end on tasks(date_end);
+create index task_name on tasks(name);
+create unique index email on users(email);
