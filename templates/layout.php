@@ -43,10 +43,10 @@
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                        <?php foreach ($categories as $value): ?>
+                        <?php foreach ($categories as $category): ?>
                             <li class="main-navigation__list-item">
-                                <a class="main-navigation__list-item-link" href="#"><?= $value['header']; ?></a>
-                                <span class="main-navigation__list-item-count"><?= $value['count']; ?></span>
+                                <a class="main-navigation__list-item-link" href="#"><?= strip_tags($category['header']); ?></a>
+                                <span class="main-navigation__list-item-count"><?= strip_tags($category['count']); ?></span>
                             </li>
                         <?php endforeach; ?>
                     </ul>

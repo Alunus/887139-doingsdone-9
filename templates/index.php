@@ -22,24 +22,24 @@
             <span class="checkbox__text">Показывать выполненные</span>
         </label>
     </div>
-
     <table class="tasks">
         <?php $show_complete_tasks = rand(0, 1);?>
-        <? foreach ($task_list as $key): ?>
-            <?php if ($show_complete_tasks == 1 || $key['is_complete'] == 'false'): ?>
-                <tr class="tasks__item task <?php if ($key['is_complete'] == 'true'): print "task--completed"; endif;?>">
+        <? foreach ($task_list as $task): ?>
+            <?php if ($show_complete_tasks == 1 || $task['is_complete'] == 'false'): ?>
+                <tr class="tasks__item task <?php if ($task['is_complete'] == 'true'): print "task--completed"; endif;?>
+                <?php if ($task['date'] != 'Нет') : if (time_different($task) <= 86400): print " task--important"; endif; endif;?>">
                     <td class="task__select">
                         <label class="checkbox task__checkbox">
                             <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1"
-                                <?php if ($key['is_complete'] == 'true'): print "checked"; endif;?> >
-                            <span class="checkbox__text"><?= $key['task'];?></span>
+                                <?php if ($task['is_complete'] == 'true'): print "checked"; endif;?> >
+                            <span class="checkbox__text"><?= strip_tags($task['task']);?></span>
                         </label>
                     </td>
                     <td class="task__file">
                         <a class="download-link" href="#">Home.psd</a>
                     </td>
 
-                    <td class="task__date"><?=$key['date'];?></td>
+                    <td class="task__date"><?=$task['date'];?></td>
                 </tr>
             <?php endif;?>
         <? endforeach; ?>
