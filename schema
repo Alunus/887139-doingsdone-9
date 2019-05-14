@@ -7,7 +7,7 @@ use doingsdone;
 create table projects (
 id int auto_increment primary key,
 name char (128),
-author char (128)
+author_id char (128)
 );
 
 
@@ -18,8 +18,8 @@ status tinyint(1) default '0',
 name char(64),
 file char(128),
 date_end timestamp,
-author char (64),
-project char (128)
+author_id char (64),
+project_id char (128)
 );
 
 create table users (
