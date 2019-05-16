@@ -1,0 +1,39 @@
+insert into projects (name, author_id)
+VALUES ('Входящие', '1'), ('Учеба', '1'), ('Работа', '1'), ('Домашние дела', '2'), ('Авто', '2');
+
+insert into tasks
+SET date_create = now(), status = '0', name ='Собеседование в IT компании', file = '', date_end ='2018.05.1', author_id ='1', project_id ='1';
+insert into tasks
+SET date_create = now(), status = '0', name ='Выполнить тестовое задание', file = '', date_end ='2018.12.25', author_id ='1', project_id ='1';
+insert into tasks
+SET date_create = now(), status = '1', name ='Сделать задание первого раздела', file = '', date_end ='2018.12.21', author_id ='1', project_id ='2';
+insert into tasks
+SET date_create = now(), status = '0', name ='Встреча с другом', file = '', date_end ='2019.12.22', author_id ='2', project_id ='2';
+insert into tasks
+SET date_create = now(), status = '0', name ='Купить корм для кота', file = '', author_id ='2', project_id ='2';
+insert into tasks
+SET date_create = now(), status = '0', name ='Заказать пиццу', file = '', author_id ='2', project_id ='2';
+
+insert into users
+SET email ='gineralisimus@soviet.sssr', name ='Иосиф Сталин', password ='trockiy';
+insert into users
+SET email ='runfrom@soviet.sssr', name ='Лев Троцкий', password ='icebreaker';
+
+//Для вывода задач одного пользователя
+select t.name, u.name from tasks t 
+join users u 
+on t.author_id = u.id
+where u.name like '%Сталин%';
+//Для вывода задач для одного проекта 
+select t.name, p.name from tasks t 
+join projects p 
+on t.project_id = p.id
+where p.name like '%Входя%';
+//Для изменения названия задачи по id 
+UPDATE tasks SET name = 'Купить ледоруб' WHERE id = 2;
+//Пометить задачу как выполненную 
+UPDATE tasks SET status ='1' WHERE name = 'Купить ледоруб';
+//Количество задач в проекте
+SELECT p.name, COUNT(project_id) project_count FROM tasks t
+JOIN projects p ON t.project_id = p.id
+GROUP BY name ORDER BY project_count DESC;
