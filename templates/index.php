@@ -25,21 +25,26 @@
     <table class="tasks">
         <?php $show_complete_tasks = rand(0, 1);?>
         <? foreach ($task_list as $task): ?>
-            <?php if ($show_complete_tasks == 1 || $task['is_complete'] == 'false'): ?>
-                <tr class="tasks__item task <?php if ($task['is_complete'] == 'true'): print "task--completed"; endif;?>
-                <?php if ($task['date'] != 'Нет') : if (time_different($task) <= 86400): print " task--important"; endif; endif;?>">
+            <?php if ($show_complete_tasks == 1 || $task['status'] == '0'): ?>
+                <tr class="tasks__item task <?php if ($task['status'] == '1'): print "task--completed"; endif;?>
+                <?php if ($task['date_end'] != NULL and $task['status'] != 1 and time_different($task) <= 86400) : print " task--important"; endif;?>">
                     <td class="task__select">
                         <label class="checkbox task__checkbox">
                             <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1"
-                                <?php if ($task['is_complete'] == 'true'): print "checked"; endif;?> >
-                            <span class="checkbox__text"><?= strip_tags($task['task']);?></span>
+                                <?php if ($task['status'] == '1'): print "checked"; endif;?> >
+                            <span class="checkbox__text"><?= strip_tags($task['name']);?></span>
                         </label>
                     </td>
                     <td class="task__file">
                         <a class="download-link" href="#">Home.psd</a>
                     </td>
-
-                    <td class="task__date"><?=$task['date'];?></td>
+                    <td class="task__date"><?php if ($task['date_end'] != NULL){
+                        print(date("d.m.Y", strtotime($task['date_end'])));
+                    }
+                        else {
+                            print('Нет');
+                        }
+                        ;?></td>
                 </tr>
             <?php endif;?>
         <? endforeach; ?>
