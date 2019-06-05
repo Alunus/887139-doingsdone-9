@@ -44,7 +44,8 @@
                     <ul class="main-navigation__list">
                         <?php foreach ($projects as $project): ?>
                             <li class="main-navigation__list-item">
-                                <a class="main-navigation__list-item-link" href="#"><?= strip_tags($project['name']);?></a>
+                                <a class="main-navigation__list-item-link <?php if ($project['id'] == $_GET['project_id']): print "main-navigation__list-item--active"; endif;?> "
+                                   href="<?=url($project['id'])?>"><?= strip_tags($project['name']);?></a>
                                 <span class="main-navigation__list-item-count"><?= strip_tags($project['project_count']);?></span>
                             </li>
                         <?php endforeach; ?>
